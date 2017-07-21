@@ -1,3 +1,4 @@
-site_name: My Docs
-
+site_name: Node-Crawler
+pages:
+- [index.md, Home]
 theme: readthedocs
