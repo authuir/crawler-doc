@@ -1,4 +1,5 @@
 site_name: Node-Crawler
 pages:
-- Home: 'index.md'
+- Node-Crawler: 'index.md'
+- 快速上手: 'quick_start.md'
 theme: readthedocs
