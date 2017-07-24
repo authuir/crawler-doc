@@ -1,8 +1,21 @@
 site_name: Node-Crawler
 
 pages:
-- Node-Crawler介绍: 'index.md'
-- 快速上手: 'quick_start.md'
-- 高级功能: 'extra_example.md'
+  - Node-Crawler介绍: 'index.md'
+  - 快速上手: 'quick_start.md'
+  - 高级功能: 'extra_example.md'
+  - 参数手册: 
+    - 回调设置: 'extra_example.md'
+    - 调度参数: 'extra_example.md'
+    - 重试控制: 'extra_example.md'
+    - 编码设置: 'extra_example.md'
+    - 缓存设置: 'extra_example.md'
+    - DOM选项: 'extra_example.md'
+    - 其它: 'extra_example.md'
+  - 可捕获事件: 
+    - schedule: 'extra_example.md'
+    - limiterChange: 'extra_example.md'
+    - request: 'extra_example.md'
+    - drain: 'extra_example.md'
 
 theme: readthedocs
