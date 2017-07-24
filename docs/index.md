@@ -38,6 +38,7 @@
 * [分布式爬虫](https://github.com/bda-research/node-crawler)
 * [链式模型](https://github.com/bda-research/node-crawler)
 * [使用POST,GET,PUT等请求方法](https://github.com/bda-research/node-crawler)
+* [使用Cookie](https://github.com/bda-research/node-crawler)
 
 ## 参数详细介绍
 
