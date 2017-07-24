@@ -52,7 +52,7 @@
 
 ## 并发控制及慢速模式
 
-使用 `maxConnections` 参数可控制最大并发数。
+使用参数 `maxConnections` 可控制最大并发数。
 
     var Crawler = require("crawler");
 
@@ -73,15 +73,16 @@
 
     c.queue('http://www.amazon.com');
 
-使用 `maxConnections` 参数可控制最大并发数。
+使用参数 `rateLimit` 启用慢速模式，两次请求之间会闲置 `rateLimit` 毫秒，而 `maxConnections` 将被强行修改为 1 。
 
     var Crawler = require("crawler");
 
     var c = new Crawler({
-        maxConnections : 1,
+        // `maxConnections` 将被强制修改为 1
+        maxConnections : 10,
 
-        // 最大并发数默认为10
-        rateLimit: 1000, // `maxConnections` 将被强制修改为 1
+        // 两次请求之间将闲置1000ms
+        rateLimit: 1000, 
         
         callback : function (error, res, done) {
             if(error){
@@ -94,6 +95,4 @@
         }
     });
 
-    c.queue('http://www.amazon.com');
-
-
+    c.queue(['http://www.google.com/','http://www.yahoo.com']);

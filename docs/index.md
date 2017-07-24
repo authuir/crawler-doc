@@ -32,11 +32,12 @@
 
 ## 高级功能
 
-* [链式模型](https://github.com/bda-research/node-crawler)
 * [自定义参数](https://github.com/bda-research/node-crawler)
 * [使用http代理](https://github.com/bda-research/node-crawler)
 * [处理原始返回数据](https://github.com/bda-research/node-crawler)
 * [分布式爬虫](https://github.com/bda-research/node-crawler)
+* [链式模型](https://github.com/bda-research/node-crawler)
+* [使用POST,GET,PUT等请求方法](https://github.com/bda-research/node-crawler)
 
 ## 参数详细介绍
 

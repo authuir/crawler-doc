@@ -1,5 +1,8 @@
 site_name: Node-Crawler
+
 pages:
-- Node-Crawler: 'index.md'
+- Node-Crawler介绍: 'index.md'
 - 快速上手: 'quick_start.md'
+- 高级功能: 'extra_example.md'
+
 theme: readthedocs
