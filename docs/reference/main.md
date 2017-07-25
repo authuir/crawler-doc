@@ -10,7 +10,7 @@
 
  * `uri`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) 想要爬取的站点的URL
  * `timeout` : [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) 超时时间（单位：毫秒，默认值15000）
- * [All mikeal's requests options are accepted](https://github.com/mikeal/request#requestoptions-callback)
+ * 所有符合[request](https://github.com/request/request#requestoptions-callback)包的参数均能兼容
 
 ## 回调函数
 
@@ -20,7 +20,7 @@
          * `res.statusCode`: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) HTTP状态码，正常返回 `200`
          * `res.body`: [Buffer](https://nodejs.org/api/buffer.html) | [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) HTTP响应实体部分
          * `res.headers`: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) HTTP响应头部
-         * `res.request`: [Request](https://github.com/request/request)  An instance of Mikeal's `Request` instead of [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest)
+         * `res.request`: [Request](https://github.com/request/request)  `Request` 的一个实例（并非 [http.ClientRequest](https://nodejs.org/api/http.html#http_class_http_clientrequest)） 
              * `res.request.uri`: [urlObject](https://nodejs.org/api/url.html#url_url_strings_and_url_objects) 处理后的URL的HTTP请求实体
              * `res.request.method`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) HTTP 请求方法,例如 `GET`,`POST`
              * `res.request.headers`: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) HTTP 请求头部
@@ -42,19 +42,27 @@
 
 ## DOM选项
 
- * `jQuery`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)|[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)|[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) 设置为true或者"cheerio"时，将使用 `cheerio` 作为解析器，并使用默认配置. 使用自定义配置的 `cheerio` 或使用符合 [Parser options](https://github.com/fb55/htmlparser2/wiki/Parser-options)的对象时. Disable injecting jQuery selector if false. If you have memory leak issue in your project, use "whacko", an alternative parser,to avoid that. (Default true)
+ * `jQuery`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type)|[String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)|[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) 设置为true或者"cheerio"时，将使用 `cheerio` 作为解析器，并使用默认配置. 当然你也可以使用自定义配置的 `cheerio` 或使用符合 [Parser options](https://github.com/fb55/htmlparser2/wiki/Parser-options) 的其它解析器。如果此值为false，将禁用注入jQuery选择器。 注意，如果你发现项目存在内存泄漏问题，请使用 "whacko" 作为解析器来避免这个问题你,  "whacko" 是一个可以用来代替的解析器。 (默认为 true)
 
 ## 编码设置
 
- * `forceUTF8`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) If true crawler will get charset from HTTP headers or meta tag in html and convert it to UTF8 if necessary. Never worry about encoding anymore! (Default true),
- * `incomingEncoding`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) With forceUTF8: true to set encoding manually (Default null) so that crawler will not have to detect charset by itself. For example, `incomingEncoding : 'windows-1255'`. See [all supported encodings](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings)
+ * `forceUTF8`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) 此值为 true 时，crawler 将会从HTTP头部或者meta标签提取字符编码，并将其强制转换为 UTF8格式。 再也不用为不同编码的问题操心了！ (默认为 true),
+ * `incomingEncoding`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) 一般和forceUTF8一起使用，设定此值将可以手动指定待转换的字符编码（默认为 null）。可以像这么使用： `incomingEncoding : 'windows-1255'`。这里是支持的[所有编码](https://github.com/ashtuchkin/iconv-lite/wiki/Supported-Encodings)
 
 ## 缓存设置
 
- * `skipDuplicates`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) If true skips URIs that were already crawled, without even calling callback() (Default false). __This is not recommended__, it's better to handle outside `Crawler` use [seenreq](https://github.com/mike442144/seenreq)
+ * `skipDuplicates`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) 此值为 true 时，将跳过已经爬取的URI，且不会调用callback() (默认为 false)。 __这不是推荐做法__，更好的做法是在 `Crawler` 之外使用 [seenreq](https://github.com/mike442144/seenreq) 处理。
 
 ## 其他
 
- * `rotateUA`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) 此值为 `true` 时, `userAgent` should be an array and rotate it (Default false) 
- * `userAgent`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)|[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), If `rotateUA` is false, but `userAgent` is an array, crawler will use the first one.
- * `referer`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) If truthy sets the HTTP referer header
+ * `rotateUA`: [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type) 此值为 `true` 时, `userAgent` 应该是一个UA的Array，此时Crawler将在不同的请求中轮换UA。(默认为 false) 
+
+ * `userAgent`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)|[Array] 如果 `rotateUA` 为 false, 且 `userAgent` 为 array, crawler 将使用array中的第一个UA。
+
+ * `referer`: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type) 设定此值将可以修改HTTP referer header
+
+ * `queue(uri, options)`: 将任务加入队列，并等待其被执行
+    * `uri` [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type)
+    * `options` [Options](#options-reference)
+
+ * `queueSize`: [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) 当前队列长度，只读。

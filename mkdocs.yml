@@ -4,19 +4,12 @@ pages:
   - Node-Crawler介绍: 'index.md'
   - 快速上手: 'quick_start.md'
   - 高级功能: 'extra_example.md'
-  - 参数手册:
-    - 介绍: 'reference/main.md'
-    - 回调设置: 'reference/callbacks.md'
-    - 调度参数: 'reference/schedule.md'
-    - 重试控制: 'reference/retry.md'
-    - 编码设置: 'reference/encoding.md'
-    - 缓存设置: 'reference/cache.md'
-    - DOM选项: 'reference/dom.md'
-    - 其它: 'reference/others.md'
+  - 参数手册: 'reference/main.md'
   - 可捕获事件: 
-    - schedule: 'extra_example.md'
-    - limiterChange: 'extra_example.md'
-    - request: 'extra_example.md'
-    - drain: 'extra_example.md'
+    - 介绍: 'event/introduce.md'
+    - schedule: 'event/schedule.md'
+    - limiterChange: 'event/limiterChange.md'
+    - request: 'event/request.md'
+    - drain: 'event/drain.md'
 
 theme: readthedocs
